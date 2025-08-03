@@ -6,4 +6,5 @@ import tailwind from "@astrojs/tailwind";
 export default defineConfig({
   site: 'https://cyberaether.xyz',
   integrations: [tailwind()],
+  outDir: './dist',
 });
