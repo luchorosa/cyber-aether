@@ -1,0 +1,138 @@
+---
+
+import Header from "../components/Header.astro"
+interface Props {
+	title: string;
+	description?: string;
+	image?: string;
+}
+
+const { description = "A personal blog about anything and everything", image = "/images/blog.jpg" } = Astro.props;
+const { title } = Astro.props;
+const siteTitle = "Cyber Aether";
+---
+
+<!doctype html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="description" content={description} />
+		<meta name="viewport" content="width=device-width" />
+		<link rel="icon" type="image/svg+xml" href="/favicon.png" />
+		<meta name="generator" content={Astro.generator} />
+		<meta property="og:image" content={image} />
+		<title>{title ? `${title} - ${siteTitle}` : siteTitle}</title>
+	</head>
+	<body class="min-h-screen bg-[#0B0017] text-slate-100">
+		<Header />
+		<slot />
+	</body>
+</html>
+<style is:global>
+	@import url('https://fonts.googleapis.com/css2?family=Kumar+One&display=swap');
+	@import url('https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap');
+	@import url('https://fonts.googleapis.com/css2?family=Source+Serif+4:ital,opsz,wght@0,8..60,200..900;1,8..60,200..900&display=swap');
+	@import url('https://fonts.googleapis.com/css2?family=Spectral:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;0,800;1,200;1,300;1,400;1,500;1,600;1,700;1,800&display=swap');
+	@import url('https://fonts.googleapis.com/css2?family=Fira+Code:wght@300..700&display=swap');
+
+	.brand {
+	font-family: "Kumar One", serif;
+	font-weight: 400;
+	font-style: normal;
+	}
+	
+	/* <weight>: Use a value from 300 to 700 */
+	.post-list-title {
+		font-family: "Fira Code", monospace;
+		font-optical-sizing: auto;
+		font-weight: 600;
+		font-style: normal;
+	}
+
+	/* p, button {
+	font-family: "Inter", sans-serif!important;
+	font-optical-sizing: auto;
+	font-style: normal;
+	font-weight: 400;
+	line-height: 2rem;
+	font-variation-settings: "slnt" 0;
+	} */
+
+	p, button {
+	font-family: "Spectral", serif!important;
+	font-optical-sizing: auto;
+	font-style: normal;
+	font-weight: 400;
+	}
+
+	p a {
+		color: oklch(81.1% 0.111 293.571)!important;
+	}
+
+	.title {
+		font-family: "Fira Code", monospace;
+		font-optical-sizing: auto;
+		font-weight: 700;
+		font-style: normal;
+	}
+
+	/* Glitch effect for the site name (logo) on the header */
+	.glitch {
+		position: relative;
+		display: inline-block;
+		font-family: "Kumar One", serif;
+		font-weight: 400;
+		font-style: normal;
+		text-decoration: none;
+		overflow: hidden;
+	}
+
+	.glitch::before,
+	.glitch::after {
+		content: attr(data-text);
+		position: absolute;
+		left: 0;
+		top: 0;
+		width: 100%;
+		overflow: hidden;
+		clip: rect(0, 0, 0, 0);
+	}
+
+	.glitch::before {
+		left: 2px;
+		text-shadow: -2px 0 red;
+	}
+
+	.glitch::after {
+		left: -2px;
+		text-shadow: -2px 0 cyan;
+	}
+
+	.glitch:hover::before {
+		animation: glitch-anim 0.4s linear;
+	}
+
+	.glitch:hover::after {
+		animation: glitch-anim2 0.4s linear;
+	}
+
+	@keyframes glitch-anim {
+		0% { clip: rect(10px, 9999px, 80px, 0); }
+		20% { clip: rect(60px, 9999px, 70px, 0); }
+		40% { clip: rect(30px, 9999px, 90px, 0); }
+		60% { clip: rect(20px, 9999px, 80px, 0); }
+		80% { clip: rect(50px, 9999px, 60px, 0); }
+		100% { clip: rect(0, 0, 0, 0); }
+	}
+
+	@keyframes glitch-anim2 {
+		0% { clip: rect(30px, 9999px, 60px, 0); }
+		20% { clip: rect(10px, 9999px, 40px, 0); }
+		40% { clip: rect(40px, 9999px, 70px, 0); }
+		60% { clip: rect(20px, 9999px, 50px, 0); }
+		80% { clip: rect(60px, 9999px, 80px, 0); }
+		100% { clip: rect(0, 0, 0, 0); }
+	}
+	/* Enf of glitch effect styles */
+
+</style>
