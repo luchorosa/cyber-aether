@@ -23,7 +23,7 @@ const siteTitle = "Cyber Aether";
 		<meta property="og:image" content={image} />
 		<title>{title ? `${title} - ${siteTitle}` : siteTitle}</title>
 	</head>
-	<body class="min-h-screen bg-[#0B0017] text-slate-100">
+	<body class="min-h-screen text-slate-100">
 		<Header />
 		<slot />
 	</body>
@@ -36,7 +36,8 @@ const siteTitle = "Cyber Aether";
 	@import url('https://fonts.googleapis.com/css2?family=Fira+Code:wght@300..700&display=swap');
 
 	* {
-		color: oklch(98.4% 0.003 247.858);
+		color: #f8fafc;
+		background-color: #0B0017;
 	}
 
 	.brand {
@@ -52,15 +53,6 @@ const siteTitle = "Cyber Aether";
 		font-weight: 600;
 		font-style: normal;
 	}
-
-	/* p, button {
-	font-family: "Inter", sans-serif!important;
-	font-optical-sizing: auto;
-	font-style: normal;
-	font-weight: 400;
-	line-height: 2rem;
-	font-variation-settings: "slnt" 0;
-	} */
 
 	p, button {
 	font-family: "Spectral", serif!important;
