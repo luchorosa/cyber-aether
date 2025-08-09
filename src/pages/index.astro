@@ -4,7 +4,10 @@ import Main from "../components/Main.astro";
 import Layout from '../layouts/Layout.astro';
 import PostList from '../components/PostList.astro';
 
-const posts = await getCollection("posts");
+const posts = (await getCollection('posts', ({ data }) => !data.draft))
+  .sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf());
+
+const fmt = (d: Date) => d.toISOString().slice(0, 10);
 ---
 
 <Layout title="Home">

@@ -1,8 +1,9 @@
 ---
 author: Lucho
 categories: [""]
-date: 08/03/2025
+date: 2025/08/03
 featured: false
+draft: false
 title: A blog about nothing
 ---
 

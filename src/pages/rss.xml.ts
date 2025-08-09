@@ -13,7 +13,7 @@ export async function GET(context: APIContext) {
         title: post.data.title,
         pubDate: new Date(post.data.date),
         link: `/blog/${post.slug}/`,
-        content: await marked(post.body), // transforma el markdown en HTML para el RSS
+        content: await marked(post.body),
       }))
   );
 
