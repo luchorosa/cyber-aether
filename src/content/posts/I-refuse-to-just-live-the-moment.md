@@ -7,7 +7,7 @@ draft: false
 title: I refuse to just "live the moment"
 ---
 
-![Concert performance with a singer holding a microphone at center stage, wearing glasses, while a guitarist plays under bright blue and purple stage lights.](/src/content/posts/images/2025/08/cuaerteto-de-nos-2018-2.jpeg)
+![Concert performance with a singer holding a microphone at center stage, wearing glasses, while a guitarist plays under bright blue and purple stage lights.](/images/2025/08/cuaerteto-de-nos-2018-2.jpeg)
 
 In 2008 I went to a concert with a friend. It was my first time seeing a big band live and my first time going to a concert without adult supervision. It was amazing. But then I forgot almost everything about it. I mean yeah, sure, I remember I had a great time and all, but I cannot remember speciffic moments and how they played my fav songs.
 
@@ -17,7 +17,7 @@ The truth is that without external support, on it's own, my memory sucks. And th
 
 10 years later I went to see the same band. I bumped into them by chance when they were getting out of their tour bus in front of the venue where they would be playing that night. I didn't hesitate asking them for a photo. To this day I still cannot believe how lucky I was, and if it wasn't for this photo I would probably forget this even happened.
 
-![Three band members from "El Cuarteto de Nos" and me, standing close together and smiling for a selfie on the street, with a large tour bus in the background.](/src/content/posts/images/2025/08/cuaerteto-de-nos-2018-1.jpeg)
+![Three band members from "El Cuarteto de Nos" and me, standing close together and smiling for a selfie on the street, with a large tour bus in the background.](/images/2025/08/cuaerteto-de-nos-2018-1.jpeg)
 
 This time I took many pictures and videos, which I rewatch to this day.
 
@@ -25,7 +25,7 @@ This time I took many pictures and videos, which I rewatch to this day.
 
 This might be a very personal fact, but i've noticed that for some reason capturing these moments not only allows me to relive them but also enhaces the quality of said memories. I have much more vivid memories from the shows I captured something that from the ones I didn't.
 
-![Barbie Williams, one of Siamés lead singers, is lying on the floor singing while reaching one arm upward as the crowd stands around watching.](/src/content/posts/images/2025/08/siames-2024.jpeg)
+![Barbie Williams, one of Siamés lead singers, is lying on the floor singing while reaching one arm upward as the crowd stands around watching.](/images/2025/08/siames-2024.jpeg)
 
 2 months from now I am going to see my favorite band live for the first time. I've been waiting for this moment for 20 years. Can you Imagine not capturing anything? LOL. Coudln't be me, sorry.
 
