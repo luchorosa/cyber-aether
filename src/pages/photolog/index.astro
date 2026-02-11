@@ -1,0 +1,17 @@
+---
+import { getCollection } from 'astro:content';
+import Main from "../../components/Main.astro";
+import Layout from '../../layouts/Layout.astro';
+import PhotologList from "../../components/PhotologList.astro";
+
+const photos = (await getCollection('photolog'))
+  .filter((p) => !p.data.draft)
+  .sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf());
+
+---
+
+<Layout title="Photo logs" activeTab="photolog">
+	<Main>
+        <PhotologList posts={photos} />
+	</Main>
+</Layout>

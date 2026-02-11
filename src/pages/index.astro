@@ -1,17 +1,33 @@
 ---
-import { getCollection } from "astro:content";
+import { getCollection, type CollectionEntry } from "astro:content";
 import Main from "../components/Main.astro";
-import Layout from '../layouts/Layout.astro';
-import PostList from '../components/PostList.astro';
+import Layout from "../layouts/Layout.astro";
+import Post from "../components/Post.astro";
+import PhotologPost from "../components/PhotologPost.astro";
 
-const posts = (await getCollection('posts', ({ data }) => !data.draft))
-  .sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf());
+const posts = await getCollection("posts", ({ data }) => !data.draft);
+const photos = await getCollection("photolog", ({ data }) => !data.draft);
 
-const fmt = (d: Date) => d.toISOString().slice(0, 10);
+type FeedItem =
+	| { type: "post"; entry: CollectionEntry<"posts"> }
+	| { type: "photolog"; entry: CollectionEntry<"photolog"> };
+
+const items: FeedItem[] = [
+	...posts.map((entry) => ({ type: "post", entry })),
+	...photos.map((entry) => ({ type: "photolog", entry })),
+].sort((a, b) => b.entry.data.date.valueOf() - a.entry.data.date.valueOf());
 ---
 
-<Layout title="Home">
+<Layout title="Home" activeTab="all">
 	<Main>
-        <PostList posts={posts}/>
+		<div class="grid grid-cols-1 gap-x-16 gap-y-8 max-md:grid-cols-1 mg-24">
+			{items.map((item) =>
+				item.type === "post" ? (
+					<Post post={item.entry} />
+				) : (
+					<PhotologPost post={item.entry} />
+				),
+			)}
+		</div>
 	</Main>
 </Layout>

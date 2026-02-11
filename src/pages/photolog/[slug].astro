@@ -1,0 +1,54 @@
+---
+import type { CollectionEntry } from 'astro:content';
+import { getCollection } from 'astro:content';
+
+import Layout from '../../layouts/Layout.astro';
+import Main from '../../components/Main.astro';
+
+export async function getStaticPaths() {
+  const photolog = await getCollection('photolog');
+
+  return photolog
+    .filter((p) => !p.data.draft)
+    .map((p) => ({
+      params: { slug: p.slug },
+      props: { post: p },
+    }));
+}
+
+const { post } = Astro.props as { post: CollectionEntry<'photolog'> };
+const { Content } = await post.render();
+const fmt = (d: Date) => d.toISOString().slice(0, 10);
+
+---
+
+<Layout title={post.data.title}>
+	<Main>
+        <div class="max-w-max px-2 py-1 rounded-md bg-[#24093F] text-violet-300 text-xs">
+            {fmt(post.data.date)}
+        </div> 
+        <h1 class="title text-2xl md:text-3xl">{post.data.title}</h1>
+        {(post.data.camera || post.data.filmStock) && (
+          <div class="mt-2 flex flex-col gap-2 md:flex-row md:gap-8">
+            {post.data.camera && (
+              <div class="leading-tight">
+                <p class="text-xs tracking-wider uppercase text-slate-400">Camera</p>
+                <p class="text-base md:text-lg text-slate-100">{post.data.camera}</p>
+              </div>
+            )}
+            {post.data.filmStock && (
+              <div class="leading-tight">
+                <p class="text-xs tracking-wider uppercase text-slate-400">Film</p>
+                <p class="text-base md:text-lg text-slate-100">{post.data.filmStock}</p>
+              </div>
+            )}
+          </div>
+        )}
+        <div class="title prose dark:prose-invert
+                    prose-h2:font-bold prose-h2:text-xl prose-h2:text-slate-100
+                    prose-a:text-violet-600 leading-relaxed prose-img:rounded-none
+                    prose-headings:underlinedark:prose-invert prose-xl overflow-visible relative mb-20">
+            <Content/>
+        </div>
+	</Main>
+</Layout>

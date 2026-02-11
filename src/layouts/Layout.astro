@@ -1,13 +1,15 @@
 ---
 
 import Header from "../components/Header.astro"
+import SectionTabs from "../components/SectionTabs.astro";
 interface Props {
 	title: string;
 	description?: string;
 	image?: string;
+	activeTab?: "all" | "blog" | "photolog";
 }
 
-const { description = "A blog about nothing", image = "/images/blog.jpg" } = Astro.props;
+const { description = "A blog about nothing", image = "/images/blog.jpg", activeTab } = Astro.props;
 const { title } = Astro.props;
 const siteTitle = "Cyber Aether";
 ---
@@ -25,6 +27,7 @@ const siteTitle = "Cyber Aether";
 	</head>
 	<body class="min-h-screen text-slate-300">
 		<Header />
+		{activeTab && <SectionTabs activeTab={activeTab} />}
 		<slot />
 	</body>
 </html>

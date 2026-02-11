@@ -4,15 +4,19 @@ import type { APIContext } from 'astro';
 import { marked } from 'marked';
 
 export async function GET(context: APIContext) {
-  const posts = await getCollection("posts");
+  const posts = await getCollection("posts", ({ data }) => !data.draft);
+  const photos = await getCollection("photolog", ({ data }) => !data.draft);
 
   const items: RSSFeedItem[] = await Promise.all(
-    posts
-      .sort((a, b) => new Date(b.data.date).getTime() - new Date(a.data.date).getTime())
-      .map(async (post): Promise<RSSFeedItem> => ({
+    [
+      ...posts.map((post) => ({ type: "posts" as const, post })),
+      ...photos.map((post) => ({ type: "photolog" as const, post })),
+    ]
+      .sort((a, b) => b.post.data.date.valueOf() - a.post.data.date.valueOf())
+      .map(async ({ type, post }): Promise<RSSFeedItem> => ({
         title: post.data.title,
-        pubDate: new Date(post.data.date),
-        link: `/blog/${post.slug}/`,
+        pubDate: post.data.date,
+        link: type === "posts" ? `/blog/${post.slug}/` : `/photolog/${post.slug}/`,
         content: await marked(post.body),
       }))
   );

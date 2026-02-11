@@ -9,6 +9,19 @@ const postsCollection  = defineCollection({
     })
 })
 
+const photosCollection = defineCollection({
+  type: 'content',
+  schema: z.object({
+    title: z.string(),
+    date: z.date(),
+    location: z.string().optional(),
+    camera: z.string().optional(),
+    filmStock: z.string().optional(),
+    draft: z.boolean().default(false),
+  }),
+});
+
 export const collections = {
-    posts: postsCollection
-}
+    posts: postsCollection,
+    photolog: photosCollection,
+};

@@ -1,0 +1,39 @@
+---
+type TabKey = "all" | "blog" | "photolog";
+
+type Props = {
+  activeTab: TabKey;
+};
+
+const { activeTab } = Astro.props;
+
+const tabs: Array<{ key: TabKey; label: string; href: string }> = [
+  { key: "all", label: "All", href: "/" },
+  { key: "blog", label: "Blog", href: "/blog/" },
+  { key: "photolog", label: "Photolog", href: "/photolog/" },
+];
+---
+
+<nav aria-label="Content sections" class="w-full border border-transparent border-b-[#4F316F]">
+  <div class="w-2xl max-w-2xl mx-auto px-4 md:px-0">
+    <div class="flex items-center gap-2 py-3">
+      {tabs.map((tab) => {
+        const isActive = tab.key === activeTab;
+        return (
+          <a
+            href={tab.href}
+            class:list={[
+              "post-list-title text-sm px-3 py-1 rounded-md border",
+              isActive
+                ? "bg-[#24093F] border-[#4F316F] text-violet-300"
+                : "border-transparent text-slate-400 hover:text-slate-100 hover:border-[#4F316F]",
+            ]}
+            aria-current={isActive ? "page" : undefined}
+          >
+            {tab.label}
+          </a>
+        );
+      })}
+    </div>
+  </div>
+</nav>
