@@ -13,8 +13,8 @@ type FeedItem =
 	| { type: "photolog"; entry: CollectionEntry<"photolog"> };
 
 const items: FeedItem[] = [
-	...posts.map((entry) => ({ type: "post", entry })),
-	...photos.map((entry) => ({ type: "photolog", entry })),
+	...posts.map((entry) => ({ type: "post" as const, entry })),
+	...photos.map((entry) => ({ type: "photolog" as const, entry })),
 ].sort((a, b) => b.entry.data.date.valueOf() - a.entry.data.date.valueOf());
 ---
 

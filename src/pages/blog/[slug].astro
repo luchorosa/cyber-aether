@@ -2,7 +2,6 @@
 import {getCollection, type CollectionEntry} from "astro:content";
 import Layout from "../../layouts/Layout.astro";
 import Main from "../../components/Main.astro";
-import { Image } from 'astro:assets';
 
 export const getStaticPaths = async () => {
     const posts = await getCollection("posts")
